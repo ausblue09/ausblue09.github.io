@@ -69,9 +69,9 @@
         //////////////////////////////////////////////////////////////////
 
         // TODO 2 - Variable declarations
-
-
-
+        var positionX = 0; // starting x-position of the box
+        var points = 0; // keeps track of how many times the box is clicked
+        var speed = 10; // starting speed of the box
 
 
         /**
@@ -80,10 +80,16 @@
          * If the box drifts off the screen, turn it around!
          */
         function update() {moveBoxTo(boardWidth); // Moves box to x-position 200
+            positionX += speed;
+            if (positionX > boardWidth) {
+            speed *= -1; // reverse direction
+            }
+            else if (positionX < 0) {
+            speed *= -1;           // bounce off left edge
+            }
+            moveBoxTo(positionX); // moves box based on positionX
 
-        
 
-          
         }
 
         /**
@@ -94,8 +100,12 @@
          * - move the box to the left side of the screen.
          */
         function handleBoxClick() {
-
-
+            positionX = 0;        // reset position
+            changeBoxText(0);     // show "0" on the box
+            positionX = 0;       // reset box back to starting position
+            points++;            // increase score by 1
+            speed = 3 * points + 10;
+            changeBoxText(points); // update box text with current score
 
 
         }
