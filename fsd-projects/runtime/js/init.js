@@ -43,11 +43,13 @@ var init = function (window) {
 
   window.opspark.makeSpriteSheet(data).then(function (ss) {
     spritesheet = ss;
+    console.log("spritesheet loaded", spritesheet);
     halle = window.opspark.makeHalle(
       spritesheet,
       particleManager,
       debugHalleHitZones
     );
+    console.log("halle created", !!halle);
     halle.x = halle.getBounds().width * 2;
     halle.y = ground.y - halle.getBounds().height + 3;
     app.addUpdateable(halle);
@@ -61,6 +63,32 @@ var init = function (window) {
 
     app.addUpdateable(playerManager);
     app.addUpdateable({ update: update });
+  });
+
+  // If the spritesheet fails to load for any reason, create a visible
+  // placeholder so the player is visible and the game loop keeps running.
+  // Also provide a minimal no-op playerManager to avoid runtime errors.
+  window.opspark.makeSpriteSheet(data).catch(function (err) {
+    console.error("spritesheet load failed, showing placeholder", err);
+    var placeholder = new createjs.Shape();
+    placeholder.graphics.beginFill("#ffcc00").drawCircle(0, 0, 30);
+    placeholder.regX = 0;
+    placeholder.regY = 0;
+    placeholder.getBounds = function () {
+      return { width: 60, height: 60 };
+    };
+    placeholder.x = 60;
+    placeholder.y = ground.y - 60 + 3;
+    halle = placeholder;
+    view.addChild(halle);
+    app.addUpdateable({ update: update });
+
+    // minimal playerManager stub used by update() to avoid exceptions
+    playerManager = {
+      update: function () {},
+      hitTest: function () {},
+    };
+    app.addUpdateable(playerManager);
   });
 
   view.addChild(fps);

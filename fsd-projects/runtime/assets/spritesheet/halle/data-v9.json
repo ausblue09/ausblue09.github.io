@@ -1,14 +1,11 @@
 {
+  "id": "halle",
 
-"id": "halle",
+  "framerate": 30,
 
-"framerate": 30,
+  "images": ["/runtime/assets/spritesheet/halle/halle-v9.png"],
 
-"images": [
-    "runtime/assets/spritesheet/halle/halle-v9.png"
-],
-
-"frames": [
+  "frames": [
     [2, 2, 291, 301, 0, 0, 0],
     [295, 2, 291, 301, 0, 0, 0],
     [588, 2, 291, 301, 0, 0, 0],
@@ -266,30 +263,29 @@
     [2795, 1780, 97, 159, 0, 0, 0],
     [2894, 1780, 97, 159, 0, 0, 0],
     [2993, 1780, 97, 159, 0, 0, 0]
-],
+  ],
 
-"animations": {
+  "animations": {
     "diefront": [0, 63, "false"],
     "duck": [64, 91, "false"],
     "duckin": [64, 78, "false"],
     "duckout": [78, 91, "false"],
     "shootend": [104, 122, "false"],
-    
+
     "shootstart": {
-        "frames": [92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105]
+      "frames": [92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105]
     },
-    
+
     "shoot": [92, 122, "false"],
     "stopside": [123, 123, "false"],
     "run": [124, 144, "false"],
     "walk": [145, 174, "false"],
     "jumpfly": [175, 232, "false"],
     "jump": [233, 256, "false"]
-},
+  },
 
-"texturepacker": [
-        "SmartUpdateHash: $TexturePacker:SmartUpdate:c3339aa6c5fcd204d103074163c95853:1af716894e51f76849df6e4d5b0a1c10:cead97036507a6005a8208c479ba6ff4$",
-        "Created with TexturePacker (https://www.codeandweb.com/texturepacker) for EaselJS"
-]
-
+  "texturepacker": [
+    "SmartUpdateHash: $TexturePacker:SmartUpdate:c3339aa6c5fcd204d103074163c95853:1af716894e51f76849df6e4d5b0a1c10:cead97036507a6005a8208c479ba6ff4$",
+    "Created with TexturePacker (https://www.codeandweb.com/texturepacker) for EaselJS"
+  ]
 }
