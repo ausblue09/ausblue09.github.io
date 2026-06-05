@@ -33,21 +33,45 @@ $(document).ready(function () {
   /////////////////////////////////////////////////
   // ALL OF YOUR CODE SHOULD GO BELOW HERE ////////
   /////////////////////////////////////////////////
-
+// TODO 0 complete
   // TODO 1: create a new shape object and add it to the array
-  
+ const shape = {
+  color: "blue",
+  shape: "circle",
+  repeat: 3,
+};
+dataShapes.push(shape);
 
   // TODO 2: add a new property to all data shapes
-  
+  for (var count = 0; count < dataShapes.length; count++) {
+  var currentShape = dataShapes[count];
+
+  if (currentShape.color === "red") {
+    currentShape.goodBehavior = "bounce";
+  } else if (currentShape.color === "blue") {
+    currentShape.goodBehavior = "blink";
+  } else {
+    currentShape.goodBehavior = "spin";
+  }
+}
 
   // TODO 3-a: add a function that handles the static display type
-  
+  function handleStatic() {
+  setBackgroundWithObject(dataShapes[currentIndex]);
+  animationDetails.displayType = 1;
+}
 
   // TODO 4-a: add a function that handles the good display type
-  
+  function handleGood() {
+    setBackgroundWithObject(dataShapes[currentIndex]);
+    animationDetails.displayType = 2;
+  }
 
   // TODO 5-a: add a function that handles the bad display type
-  
+  function handleBad() {
+  setBackgroundWithObject(dataShapes[currentIndex]);
+  animationDetails.displayType = 3;
+}
 
   /////////////////////////////////////////////////
   // BUTTON HANDLERS BELOW HERE (3-b, 4-b, 5-b) ///
@@ -55,17 +79,17 @@ $(document).ready(function () {
 
   function staticDisplay() {
     // TODO 3-b: call your handleStatic function
-    
+    handleStatic();
   }
 
   function goodDisplay() {
     // TODO 4-b: call your handleGood function
-    
+    handleGood();
   }
 
   function badDisplay() {
     // TODO 5-b: call your handleBad function
-    
+    handleBad();
   }
 
   /////////////////////////////////////////////////
